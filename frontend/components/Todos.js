@@ -1,11 +1,12 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import styled from 'styled-components'
+
+import { TodosContext } from '../context/todos'
 
 const StyledTodo = styled.li`
   text-decoration: ${pr => pr.$complete ? 'line-through' : 'initial'};
   cursor: pointer;
 `
-
 export default function Todo(props) {
   const {
     todos,
@@ -14,8 +15,11 @@ export default function Todo(props) {
     toggleShowCompletedTodos
   } = props
 
+  const {favoriteBand} = useContext(TodosContext)
+
   return (
     <div id="todos">
+      <h3>Favorite Band Is {favoriteBand}</h3>
       <h3>Todos</h3>
       <ul>
         {
